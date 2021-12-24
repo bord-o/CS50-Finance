@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+
+<style>
+    th {
+        padding: 25px;
+    }
+    .center {
+        margin-left: auto;
+        margin-right: auto;
+}
+</style>
+
+    <div>
+        <table class="center">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Shares</th>
+                    <th>Price</th>
+                    <th>Operation</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- TODO: Loop through the database entries to display them in this table -->
+                {% for entry in transactions %}
+                    <tr>
+                        <th>{{entry.symbol}}</th>
+                        <th>{{entry.shares}}</th>
+                        <th>${{ "%.2f"|format(entry.price)}}</th>
+                        <th>{{entry.operation}}</th>
+                        <th>{{entry.time}}</th>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+{% endblock %}

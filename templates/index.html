@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+
+<style>
+    th {
+        padding: 25px;
+    }
+    .center {
+        margin-left: auto;
+        margin-right: auto;
+}
+</style>
+    <div>
+        <h3>Totals</h3>
+        <p>Liquid: ${{ "%.2f"|format(user_cash)}} </p>
+        <p>Total: ${{ "%.2f"|format(user_total)}}</p>
+    </div>
+    <div>
+
+        <table class="center">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Shares</th>
+                    <th>Trading @</th>
+                    <th>Position Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- TODO: Loop through the database entries to display them in this table -->
+                {% for entry in transactions %}
+                    <tr>
+                        <th>{{entry.symbol}}</th>
+                        <th>{{entry.shares}}</th>
+                        <th>${{entry.updated_price}}</th>
+                        <th>${{ "%.2f"|format(entry.updated_price * entry.shares)}}</th>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+    <div>
+        <form action="/add" method="post">
+            <div class="form-group">
+                <input type="text" autofocus class="form-control" name="amount" placeholder="Cash Amount">
+            </div>
+            <button class="btn btn-primary" type="submit">Add Cash</button>
+        </form>
+    </div>
+
+
+{% endblock %}

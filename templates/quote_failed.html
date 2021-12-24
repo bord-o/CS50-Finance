@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   Quote
+{% endblock %}
+
+{% block main %}
+<style>
+    .warning {
+        padding-top: 25px;
+    }
+</style>
+    <form action="/quote" method="post">
+        <div class="form-group">
+            <input class="form-control" name="sym" placeholder="Symbol" type="sym">
+        </div>
+        <button class="btn btn-primary" type="submit">Get Quote</button>
+    </form>
+
+    <div class="warning">
+        <h2>Symbol Not Found...</h2>
+    </div>
+{% endblock %}

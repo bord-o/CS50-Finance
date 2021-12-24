@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   Quote
+{% endblock %}
+
+{% block main %}
+
+    <div id="lookup_results">
+
+        <h4>{{ lookup_results["name"] }}: {{ lookup_results["symbol"] }}</h4>
+        <p>${{ "%.2f"|format(lookup_results["price"])}} as of {{ lookup_time }}</p>
+
+    </div>
+
+
+{% endblock %}
